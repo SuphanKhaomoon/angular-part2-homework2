@@ -1,0 +1,12 @@
+.card-header {
+    display: flex;
+    justify-content: space-between;  
+}
+
+.task-hightlight {
+    background: lightskyblue;
+}
+
+h5 {
+    color: rgb(48, 47, 47);
+}

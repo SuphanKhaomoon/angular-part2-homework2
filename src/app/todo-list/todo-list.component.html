@@ -1,0 +1,37 @@
+<div class="container">
+    <h3 class="header">ToDoList</h3>
+    <app-task *ngFor="let t of tasks" 
+              [task]="t"
+              (OnDeleted)="deletedTask($event, tasks.indexOf(t))"
+              (OnSelected)="selectedTask($event, tasks.indexOf(t))">
+    </app-task>
+    <div class="card">
+        <div class="card-header" (click)="backToAddTask()">
+            <h6 class="header">Task</h6>
+        </div>
+        <div class="card-content">
+            <form action="" class="form-group" *ngIf="isShow">
+                <div class="input-group">
+                    <span class="input-group-text">Name: </span>
+                    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name" name="Name" maxlength="30">
+                </div>
+                <div class="input-group">
+                    <textarea type="text" class="form-control" placeholder="Description" [(ngModel)]="description" name="Description"></textarea>
+                </div>
+            </form>
+            <!-- ส่วนที่แสดงผลเมื่อทำการคลิกในแต่ละ Task -->
+            <div *ngIf="!isShow">
+                <div class="input-group">
+                    <span class="input-group-text">Name: </span>
+                    <input type="text" class="form-control" placeholder="{{ tasks[index].name }}" readonly>
+                </div>
+                <div class="input-group">
+                    <textarea type="text" class="form-control" placeholder="{{ tasks[index].description }}" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer" *ngIf="isShow">
+            <button class="btn btn-primary btn-md" (click) = "addTask()">Add</button>
+        </div>
+    </div> 
+</div>
